@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TINDAK Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+<body>
+
+<!-------------------------SIDEBAR------------------------->
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h3>TINDAK Admin</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-content="live-map">
+                        <a href="#">Live Map</a>
+                    </li>
+                    <li class="nav-item" data-content="data">
+                        <a href="#">Data</a>
+                    </li>
+                    <li class="nav-item" data-content="notifications">
+                        <a href="#">Notifications</a>
+                    </li>
+                    <li class="nav-item" data-content="settings">
+                        <a href="#">Settings</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="logout-container">
+                <button id="logout-btn">Log Out</button>
+            </div>
+        </aside>
+
+<!-------------------------LIVE MAP------------------------->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Live Map</h1>
+            </header>
+            
+            <div id="content-area">
+                <div id="live-map-content" class="content-view active">
+                    <div class="map-placeholder">
+                        <p>Map will be displayed here.</p>
+                        <p>Currently showing live GPS location of TINDAK devices.</p>
+                    </div>
+                    
+                    <div class="devices-status">
+                        <h3>Device Status</h3>
+                        <div class="device-card idle">
+                            <h4>Device 001</h4>
+                            <p>Status: IDLE</p>
+                            <p>Location: (Mock GPS Coordinates)</p>
+                        </div>
+
+                        <div class="device-card occupied">
+                            <h4>Device 002</h4>
+                            <p>Status: OCCUPIED</p>
+                            <p>Location: (Mock GPS Coordinates)</p>
+                        </div>
+                    </div>
+                </div>
+
+<!-------------------------DATA------------------------->
+                <div id="data-content" class="content-view">
+                    <div class="data-section">
+                        <div class="data-card">
+                            <h3>Total Trips</h3>
+                            <p class="data-value" id="total-trips-value">Loading...</p>
+                            <select id="trips-period-select">
+                                <option value="24h">Past 24 Hours</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+
+                        <div class="data-card">
+                            <h3>Total Distance Generated</h3>
+                            <p class="data-value" id="total-distance-value">Loading...</p>
+                            <select id="distance-period-select">
+                                <option value="24h">Past 24 Hours</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="data-details">
+                        <h3>Trip Details</h3>
+                        <table id="trip-details-table">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Device ID</th>
+                                    <th>Date</th>
+                                    <th>Distance (km)</th>
+                                    <th>Duration (min)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="data-details">
+                        <h3>Route Heat Map</h3>
+                        <div class="map-placeholder heat-map-placeholder">
+                            <p>Heat map will be displayed here.</p>
+                            <p>Adjust the time period above to change the view.</p>
+                        </div>
+                    </div>
+                </div>
+
+<!-------------------------NOTIFICATIONS------------------------->
+                <div id="notifications-content" class="content-view">
+                    <div class="notifications-list">
+                        <h3>Reported Notifications</h3>
+                        <div class="notification-card">
+                            <h4>Device 001: Reported Damage</h4>
+                            <p><strong>Reported by:</strong> Jane Doe</p>
+                            <p><strong>Date:</strong> 2025-09-17</p>
+                            <p>User reported a flat tire on the front wheel.</p>
+                                <button class="resolve-btn">Resolve</button>
+                        </div>
+                        <div class="notification-card">
+                            <h4>Device 002: Low Battery Alert</h4>
+                            <p><strong>Reported by:</strong> System</p>
+                            <p><strong>Date:</strong> 2025-09-17</p>
+                            <p>Device battery is at 15%. Needs to be charged.</p>
+                                <button class="resolve-btn">Resolve</button>
+                        </div>
+                    </div>
+                </div>
+
+<!-------------------------SETTINGS (TO DO)------------------------->
+                <div id="settings-content" class="content-view">
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
